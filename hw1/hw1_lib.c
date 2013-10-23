@@ -8,13 +8,50 @@
 
 uint16_t gray_to_binary(uint16_t gray)
 {
-   /* add your code here */
-   return gray;
+   	int i;
+	uint16_t num1 = 32768;
+	uint16_t num2 = 16384;
+
+	uint16_t out16 = gray & num1;
+
+	for(i = 14; i >= 0; i--)
+	{
+
+		if( ((out16 & num1)>>1)^(gray & num2) )
+		{
+			out16 = out16 | num2;
+		}
+
+		num1 = num1 >> 1;
+		num2 = num2 >> 1;
+
+	}
+	gray = out16;
+	return gray;
 }
+
 uint16_t binary_to_gray(uint16_t binary)
 {
-   /* add your code here */
-   return binary;
+   	int i;
+	uint16_t num1 = 32768;
+	uint16_t num2 = 16384;
+
+	uint16_t out16 = binary & num1;
+
+	for(i = 14; i >= 0; i--)
+	{
+
+		if( ((binary & num1)>>1)^(binary & num2) )
+		{
+			out16 = out16 | num2;
+		}
+
+		num1 = num1 >> 1;
+		num2 = num2 >> 1;
+
+	}
+	binary = out16;
+	return binary;
 }
 
 
